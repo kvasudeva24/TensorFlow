@@ -1,0 +1,108 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNkRkQv9FrDc5Hxi5aggpSQ",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/kvasudeva24/TensorFlow/blob/main/Module_2_Introduction_to_TensorFlow\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Bc5_dLcZDVB0",
+        "outputId": "65b5525b-cdff-434c-f764-bdbeb76d40e2"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "tf.Tensor(\n",
+            "[[[1. 1. 1.]\n",
+            "  [1. 1. 1.]\n",
+            "  [1. 1. 1.]]\n",
+            "\n",
+            " [[1. 1. 1.]\n",
+            "  [1. 1. 1.]\n",
+            "  [1. 1. 1.]]\n",
+            "\n",
+            " [[1. 1. 1.]\n",
+            "  [1. 1. 1.]\n",
+            "  [1. 1. 1.]]], shape=(3, 3, 3), dtype=float32)\n"
+          ]
+        }
+      ],
+      "source": [
+        "import tensorflow as tf\n",
+        "\n",
+        "#how to create a tensor object\n",
+        "string = tf.Variable(\"this is a string\", tf.string)\n",
+        "number = tf.Variable(324, tf.int16)\n",
+        "float = tf.Variable(3.567, tf.float64)\n",
+        "\n",
+        "#a tensor of no lists is a scalar, and n lists is nth degree tesnor\n",
+        "degree1_tensor = tf.Variable([\"test\"], tf.string)\n",
+        "degree2_tensor = tf.Variable([[\"test\", \"ok\"], [\"test\", \"yes\"]], tf.string)\n",
+        "\n",
+        "#.rank() will give you the degree/rank of the tensor\n",
+        "tf.rank(degree1_tensor)\n",
+        "tf.rank(degree2_tensor)\n",
+        "\n",
+        "#.shape returns the number of elements that exist in each dimension (applied after the object so no () )\n",
+        "# returns [number of lists, number of items in every list]\n",
+        "degree1_tensor.shape\n",
+        "degree2_tensor.shape\n",
+        "\n",
+        "#reshape resizes the tensor so long as all the dimensions multiply to the same thing\n",
+        "tensor1 = tf.ones([1,2,3]) #one exterior list, two interior lists, and 3 elements inside each list\n",
+        "tensor2 = tf.reshape(tensor1, [2,3,1]) #two exterior lists, three interior lists, and 1 element inside each list\n",
+        "tensor3 = tf.reshape(tensor2, [3, -1]) #-1 tells the tensor to calculate the size of the dimension in that place\n",
+        "                                       #resizes tensor to [3,2]\n",
+        "\n",
+        "\n",
+        "\n",
+        "#\n",
+        "# Different types of tensors:\n",
+        "#   Varibable\n",
+        "#   Constant\n",
+        "#   Placeholder\n",
+        "#   SparseTensor\n",
+        "\n",
+        "# besides Variable, all of these tensors are immutable\n",
+        "\n",
+        "#\n",
+        "\n",
+        "#to evaluate a tensor(get its value) we must run a session\n",
+        "\n",
+        "#with tf.Session() as sess:\n",
+        "  #tensor.eval() with tensor being the name of the actual object\n",
+        "\n",
+        "\n"
+      ]
+    }
+  ]
+}
